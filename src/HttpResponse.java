@@ -11,6 +11,8 @@ public class HttpResponse
 {
 	protected HttpRequest httpReq;
 	protected String HttpRes;
+	//Uncomment the below line and comment the line following it inorder to give absoulte file paths
+	//protected String path = "";
 	protected String path = "WebPages/";
 
 	public HttpResponse(HttpRequest httpReq)
