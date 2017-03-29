@@ -16,12 +16,14 @@ import java.util.concurrent.*;
  */
 public class Webserver implements Runnable
 {
+           //Declare client port, socket, And Thread Pool
 	    protected int Port = 8080;
 	    protected ServerSocket Socket;
 	    protected boolean ConnectionStop = false;
 	    protected Thread runningThread;
 	    protected ExecutorService Pool = Executors.newFixedThreadPool(10);
 	    
+	    //Constructor 
 	    public Webserver(int port)
 	    {
 	        this.Port = port;
@@ -45,6 +47,7 @@ public class Webserver implements Runnable
 	            	//mycode Implementation
 	            	cliSocket = this.Socket.accept();
 	                OutputStream output = cliSocket.getOutputStream();
+			//To Show thread sync and creation/request time
 	                long time = System.currentTimeMillis();
 	                Date date = new Date(time); //My code
 	                output.write(("HTTP/1.1 200 OK\n: Thread Server with Pool - " +	date + "").getBytes());
@@ -68,6 +71,8 @@ public class Webserver implements Runnable
 	        System.out.println("Server Stopped") ;
 	    }
 	    
+	    
+	    //to shut down the server after timer elapses
 	    private synchronized boolean isServerStopped() 
 	    {
 	        return this.ConnectionStop;
@@ -86,6 +91,7 @@ public class Webserver implements Runnable
 	        }
 	    }
 
+    //Initiliaze the port for client 
 	    private void enableSocket() 
 	    {//mycode Implementation
 	        try
@@ -100,7 +106,7 @@ public class Webserver implements Runnable
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		// Intialize a thread at given port and hit start
+		// Create a server object at given port and hit start
 		Webserver server = new Webserver(8000);
 		new Thread(server).start();
 		//mycode Implementation
