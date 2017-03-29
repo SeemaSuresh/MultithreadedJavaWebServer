@@ -1,7 +1,6 @@
 # MultithreadedJavaWebServer
 
-This application was tested on a Windows 10 system 
-The JavaSE 1.8
+This application was tested on a Windows 10 system and JavaSE 1.8 on Eclipse IDE
 
 To run the project clone the entire project in your local machine.
 
