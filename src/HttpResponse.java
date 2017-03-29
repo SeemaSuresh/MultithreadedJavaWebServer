@@ -25,7 +25,8 @@ public class HttpResponse
 		//System.out.println(f.toString());
 		try
 		{
-			FileInputStream fis = new FileInputStream(f);			
+			FileInputStream fis = new FileInputStream(f);	
+			//on successful finding of file - post the http header details of the server request. If the file not found this execution skips for 404 error
 			HttpRes = "HTTP/1.1 200 \r\n Server: Create Server/1.0 \r\n Content-Type: text/html \r\n Content-Length: "
 			          + f.length() + " \r\n"; 	
 			System.out.println("Http Response POST = " + HttpRes);
