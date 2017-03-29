@@ -2,14 +2,16 @@
 
 To run the project clone the entire project in your local machine.
 
-Open the project on Eclipse IDE
+Import the project on Eclipse IDE
 
 Go to the file WebServer.java
 
 Click on run
 
-Go to the web browser and give the url as http://localhost:8000/<Web Address Present in the WebPages Folder>
+Go to the web browser and give the url as http://localhost:8000/<Web_Address_Present_in_the_WebPages_Folder_Of_The_Project>
 ex: http://localhost:8000/FaceUpDeck.html
+
+Additional Note: In order to be able to give absolute path to files from anywhere in the local machine please read the comments on the HttpResponse.java page
 
 One hitting enter you can see the thread being started from the pool and a synchornized time message is displayed on the console along with 
 HTTPRequest GET MEssage and since the file is valid, We also can see the HTTPResponse Post message with 1.1 keep-alive protocol
