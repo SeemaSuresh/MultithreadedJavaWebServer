@@ -13,13 +13,13 @@ public class ServeRequests implements Runnable
 {
     protected Socket clientSocket;
     protected BufferedReader br;
-	protected PrintWriter pw;
+    protected PrintWriter pw;
 
     public ServeRequests(Socket clientSocket)
     {
         this.clientSocket = clientSocket;
     }
-
+ //Calls to read an incoming url query for a file and call the http req and response constructors to process the http requests
     public void run() 
     {
         try 
