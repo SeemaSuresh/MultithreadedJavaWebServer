@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		
+		<script type="text/javascript">
+
+		//reference: "http://www.dreamincode.net/forums/topic/247361-simple-tic-tac-toe-using-html5-css3-and-javascript/"
+		//Global Variables
+		var painted;
+		var content;
+		var winningCombinations;
+		var turn = 0;
+		var theCanvas;
+		var c;
+		var cxt;
+		var squaresFilled = 0;
+		var w;
+		var y;
+
+		//Instanciate Arrays
+		window.onload=function(){
+			
+			painted = new Array();
+			content = new Array();
+			winningCombinations = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+			for(var l = 0; l <= 8; l++){
+				painted[l] = false;
+				content[l]='';
+			}
+		}
+
+		//Game methods
+		function canvasClicked(canvasNumber){
+			theCanvas = "canvas"+canvasNumber;
+			c = document.getElementById(theCanvas);
+			cxt = c.getContext("2d");
+			if(squaresFilled==9){
+					alert("THE GAME IS OVER!");
+					location.reload(true);
+				}
+
+			if(painted[canvasNumber-1] ==false){
+				if(turn%2==0){
+					cxt.beginPath();
+					cxt.moveTo(10,10);
+					cxt.lineTo(40,40);
+					cxt.moveTo(40,10);
+					cxt.lineTo(10,40);
+					cxt.stroke();
+					cxt.closePath();
+					content[canvasNumber-1] = 'X';
+					painted[canvasNumber-1] = true;
+					checkForWinners(content[canvasNumber-1]);
+					
+					//AI Move - Serial 
+					
+					for(i=0; i<9; i++)
+					{
+						if(painted[i] == false){
+							t = i + 1;
+							theCanvas = "canvas" + t;
+						    c = document.getElementById(theCanvas);
+						    cxt = c.getContext("2d");
+						    cxt.beginPath();
+							cxt.arc(25,25,20,0,Math.PI*2,true);
+							cxt.stroke();
+							cxt.closePath();
+							content[i] = 'O';
+							painted[i] = true;
+							turn++;
+							squaresFilled++;
+							checkForWinners(content[i]);
+							break;
+						}
+					}
+				}
+
+				//else{
+				//	cxt.beginPath();
+				//	cxt.arc(25,25,20,0,Math.PI*2,true);
+				//	cxt.stroke();
+				//	cxt.closePath();
+				//	content[canvasNumber-1] = 'O';
+				//}
+
+				turn++;
+				
+				squaresFilled++;
+				checkForWinners(content[canvasNumber-1]);
+			}
+			else{
+				alert("THAT SPACE IS ALREADY OCCUPIED!");
+			}
+
+		}
+
+        var timer;
+		function checkForWinners(symbol){
+			
+			for(var a = 0; a < winningCombinations.length; a++){
+
+				if(content[winningCombinations[a][0]]==symbol&&content[winningCombinations[a][1]]==	symbol&&content[winningCombinations[a][2]]==symbol){
+
+					if(symbol == 'X')
+					{
+						document.getElementById("win").innerHTML = "You WON!";
+					}
+			    	else
+			    	{
+			    		document.getElementById("win").innerHTML =	"Computer WON!";
+			    	}
+
+			        //timer = setTimeout(playAgain, 1000);
+			}
+			}
+
+		}
+
+		function playAgain(){
+                //clearTimeout(timer);
+			 	//y=confirm("PLAY AGAIN?");
+
+			    //if(y==true){
+					location.reload(true);
+			    //}
+			   //else{
+				//	document.getElementById("win").innerHTML = "See you again!";
+			    //}
+		}
+
+
+		</script>
+		<style>
+		table {
+				border: 1px solid black;
+				border-spacing: 10px;
+				border-collapse: collapse;
+			}
+			td {
+			    margin: 0px;
+			    padding: 0px;
+			}
+
+			div {
+			    text-align: center;
+			}
+
+			.wrapper, table {
+			    margin: 20px auto;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="wrapper">
+		<table id ="box">
+			<h3>BEAT THE MEDIUM "TIC - TAC - TOE!"</h3>
+			<div id="win">
+		</div>
+			<tr>
+				<td>
+					<canvas class = "canvasOdd" id = "canvas1"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(1)"></canvas></td>
+				<td>
+					<canvas class = "canvasEven" id = "canvas2"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(2)"></canvas></td>
+				<td>
+					<canvas class = "canvasOdd" id = "canvas3"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(3)"></canvas></td>
+			</tr>
+			<tr>
+				<td>
+					<canvas class = "canvasEven" id = "canvas4"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(4)"></canvas></td>
+				<td>
+					<canvas class = "canvasOdd" id = "canvas5"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(5)"></canvas></td>
+				<td>
+					<canvas class = "canvasEven" id = "canvas6"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(6)"></canvas>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<canvas class = "canvasOdd" id = "canvas7"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(7)"></canvas></td>
+				<td>
+					<canvas class = "canvasEven" id = "canvas8"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(8)"></canvas></td>
+				<td>
+				<canvas class = "canvasOdd" id = "canvas9"  width="50" height="50" style="border:1px solid black" onclick="canvasClicked(9)"></canvas>
+				</td>
+			</tr>
+		</table>
+		</div>
+		<input type="button" id="restart" onclick="playAgain()" value="Restart Game" />
+		
+	</body>
+</html>
+

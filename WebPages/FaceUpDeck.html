@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Bubble Sort</title>
+
+	</head>
+
+	<body>
+    <h3 style="width:100%; text-align: center">SORT THE CARDS</h3>
+    	    <!-- We will replicate the digits now -->
+<div class="container">
+	<!-- time to add the controls -->
+	<input id="start" name="controls" type="radio" />
+	<input id="stop" name="controls" type="radio" />
+	<input id="reset" name="controls" type="radio" />
+	<div class="timer">
+		<div class="cell">
+			<div class="numbers tenhour moveten">0 1 2 3 4 5 6 7 8 9</div>
+		</div>
+		<div class="cell">
+			<div class="numbers hour moveten">0 1 2 3 4 5 6 7 8 9</div>
+		</div>
+		<div class="cell divider"><div class="numbers">:</div></div>
+		<div class="cell">
+			<div class="numbers tenminute movesix">0 1 2 3 4 5 6</div>
+		</div>
+		<div class="cell">
+			<div class="numbers minute moveten">0 1 2 3 4 5 6 7 8 9</div>
+		</div>
+		<div class="cell divider"><div class="numbers">:</div></div>
+		<div class="cell">
+			<div class="numbers tensecond movesix">0 1 2 3 4 5 6</div>
+		</div>
+		<div class="cell">
+			<div class="numbers second moveten">0 1 2 3 4 5 6 7 8 9</div>
+		</div>
+		
+	</div>
+	<!-- Lables for the controls -->
+	<div id="timer_controls" >
+		<label for="start">Start</label>
+		<label for="stop">Stop</label>
+		<label for="reset">Reset</label>
+	</div>
+</div>
+	<div id="div3" style="width:100%; text-align: center"></div>
+		<div class="playingCards" style="width:100%">
+			<ul id="ulSort" class="ulCards table">
+	        	
+	    	</ul>
+	    </div> <br/>
+	    <div id="div2" class="playingCards" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	    <div class="clear"></div><br/><br/>
+	    <input type="button" id="restart" onclick="playAgain()" value="Restart Game" style="margin: 20px; float: right"/>
+
+</html>

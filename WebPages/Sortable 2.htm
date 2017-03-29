@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="E:\Seema\ASU\EdPlus\Task 1 - Sortable\Sort.js"></script>
+
+  </head>
+  <body>
+  <ol class="sortable">
+    <li><div>Some content<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div></li>
+    <li>
+        <div>Some content<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div>
+        <ol>
+            <li><div>Some sub-item content<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div></li>
+            <li><div>Some sub-item content<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div></li>
+        </ol>
+    </li>
+    <li><div>Some content<span class="ui-icon ui-icon-arrowthick-2-n-s"></span></div></li>
+</ol>
+  </body>
+   <script>
+  $(document).ready(function(){
+
+        $('.sortable').nestedSortable({
+            handle: 'div',
+            items: 'li',
+            toleranceElement: '> div'
+        });
+
+    });
+	</script>
+  </html>
